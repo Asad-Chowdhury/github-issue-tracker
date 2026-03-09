@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Github Issue Tracker | Home</title>
+    <title>Github Issue Tracker | Dashboard</title>
     <link
       rel="shortcut icon"
       href="./images/github-logo.png"
@@ -34,6 +34,81 @@
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
+    <header>
+      <div
+        class="flex flex-col items-center gap-3 py-2 px-10 bg-white sm:flex-row sm:justify-between sm:items-center"
+      >
+        <div class="header-start flex items-center gap-2">
+          <img class="w-10" src="./images/github-logo.png" alt="github_logo" />
+          <p class="font-semibold">GitHub Issues Tracker</p>
+        </div>
+        <div class="header-end flex gap-2">
+          <label class="input">
+            <svg
+              class="h-[1em] opacity-50"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2.5"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </g>
+            </svg>
+            <input type="search" required placeholder="Search Issues...." />
+          </label>
+          <button class="btn btn-primary">
+            <span><i class="fa-solid fa-plus"></i></span>New Issue
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="max-w-[1110px] my-15 mx-auto space-y-4">
+      <section class="main-heading bg-white p-6 gap-2 rounded-xl">
+        <button class="btn-status btn btn-primary w-30">All</button>
+        <button class="btn-status btn w-30">Open</button>
+        <button class="btn-status btn w-30">Closed</button>
+      </section>
+      <section
+        class="main-details flex justify-between bg-white p-6 rounded-xl"
+      >
+        <div class="flex items-center gap-2">
+          <div
+            class="w-12 h-12 bg-[#ECE4FF] flex justify-center items-center rounded-full"
+          >
+            <img src="./images/Aperture.png" alt="" />
+          </div>
+          <div>
+            <h2 class="font-semibold text-5">
+              <span id="all-card-count">00</span> Issues
+            </h2>
+            <p class="text-[#64748B]">Track and manage your project issues</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 bg-[#00A96E] rounded-full"></div>
+            <p>Open</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 bg-[#A855F7] rounded-full"></div>
+            <p>closed</p>
+          </div>
+        </div>
+      </section>
+      <section class="card-container">
+        <div
+          id="cards"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-[#FBFBFB] p-6"
+        ></div>
+      </section>
+    </main>
+
     <script src="./scripts/tracker.js"></script>
   </body>
 </html>
