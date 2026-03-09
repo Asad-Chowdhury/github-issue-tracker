@@ -1,7 +1,18 @@
+const toggleSpinner = (show) => {
+  const spinner = document.getElementById("spinner");
+  const cards = document.getElementById("cards");
+  spinner.classList.toggle("hidden", !show);
+  cards.classList.toggle("hidden", show);
+};
+
 const loadAllIssues = () => {
+  toggleSpinner(true);
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then((res) => res.json())
-    .then((json) => displayAllIssues(json.data));
+    .then((json) => {
+      displayAllIssues(json.data);
+      toggleSpinner(false);
+    });
 };
 
 const displayAllIssues = (issues) => {
@@ -73,7 +84,7 @@ const displayAllIssues = (issues) => {
       .filter(Boolean)
       .join("");
 
-    const dateStr = issue.updatedAt;
+    const dateStr = issue.createdAt;
     const date = new Date(dateStr);
     const formattedDate = `${date.getMonth() + 1}/${String(date.getDate()).padStart(2, "0")}/${date.getFullYear()}`;
 
@@ -182,7 +193,7 @@ const openIssueModal = async (issueId) => {
     .filter(Boolean)
     .join("");
 
-  const dateStr = issue.updatedAt;
+  const dateStr = issue.createdAt;
   const date = new Date(dateStr);
   const formattedDate = `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
 
@@ -281,10 +292,12 @@ searchInput.addEventListener("input", (e) => {
       return;
     }
 
+    toggleSpinner(true);
     const res = await fetch(
       `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${encodeURIComponent(query)}`,
     );
     const json = await res.json();
     displayAllIssues(json.data);
+    toggleSpinner(false);
   }, 300);
 });
