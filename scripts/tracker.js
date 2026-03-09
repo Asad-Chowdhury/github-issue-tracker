@@ -265,3 +265,26 @@ const openIssueModal = async (issueId) => {
     if (e.target === modalWrapper) modalWrapper.remove();
   });
 };
+
+const searchInput = document.querySelector('input[type="search"]');
+
+let searchTimeout;
+
+searchInput.addEventListener("input", (e) => {
+  const query = e.target.value.trim();
+
+  clearTimeout(searchTimeout);
+
+  searchTimeout = setTimeout(async () => {
+    if (query === "") {
+      loadAllIssues(); // reset to all issues if search is cleared
+      return;
+    }
+
+    const res = await fetch(
+      `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${encodeURIComponent(query)}`,
+    );
+    const json = await res.json();
+    displayAllIssues(json.data);
+  }, 300);
+});
