@@ -34,14 +34,49 @@
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
-    <header>
-      <img src="./images/github-logo.png" alt="" />
-      <h1>GitHub Issues Tracker</h1>
-      <p>Sign in to manage your issues</p>
+    <header class="w-[520px] my-10 mx-auto bg-white p-8">
+      <div class="grid grid-cols-1 justify-items-center py-6">
+        <img class="mb-5" src="./images/github-logo.png" alt="github_logo" />
+        <h1 class="font-semibold text-[24px]">GitHub Issues Tracker</h1>
+        <p class="text-[#64748B]">Sign in to manage your issues</p>
+      </div>
+      <div>
+        <form>
+          <div class="space-y-2 py-6">
+            <label for="input-username">Username</label><br />
+            <input
+              id="input-username"
+              class="w-full p-3 border-[#ddd] rounded-lg"
+              type="text"
+              placeholder="Enter Username"
+            />
+            <p class="text-[#4A00FF] text-[14px]">Default: admin</p>
+            <label for="input-password">Password</label><br />
+            <input
+              id="input-password"
+              class="w-full p-3 border-[#ddd] rounded-lg"
+              type="password"
+              placeholder="Enter Password"
+            />
+            <p class="text-[#4A00FF] text-[14px]">Default: admin123</p>
+          </div>
+        </form>
+        <button id="btn-login" class="btn btn-primary w-full py-6">
+          Sign In
+        </button>
+        <div class="flex items-center my-6">
+          <hr class="flex-grow border-gray-300" />
+          <span class="mx-4 text-gray-500">OR</span>
+          <hr class="flex-grow border-gray-300" />
+        </div>
+        <p class="text-gray-500 text-[14px] text-center">Demo Credentials:</p>
+        <div class="bg-[#F8FAFC] p-6 text-center mt-2 rounded-lg">
+          <p><span class="font-semibold">Username: </span>admin</p>
+          <p><span class="font-semibold">Password: </span>admin123</p>
+        </div>
+      </div>
     </header>
-    
-    
-    
+
     <script src="./scripts/script.js"></script>
   </body>
 </html>
